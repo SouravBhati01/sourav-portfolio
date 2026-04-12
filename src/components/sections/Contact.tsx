@@ -2,10 +2,13 @@ import { useState } from "react"
 import { Mail, MapPin, Phone, Send, ExternalLink, CheckCircle2, AlertCircle } from "lucide-react"
 import { profile, socials } from "@/lib/profile"
 
-// Web3Forms access key — free, no backend. Sign up at https://web3forms.com/
-// and replace below with your own access_key. All emails will be delivered to
-// the email you used to sign up (so use souravrajput1034@gmail.com).
-const WEB3FORMS_ACCESS_KEY = "REPLACE_WITH_YOUR_WEB3FORMS_KEY"
+// Formspree endpoint — sign up at https://formspree.io (free: 50 submissions/month)
+// 1. Create a new form with souravrajput1034@gmail.com as the owner
+// 2. Copy your form's endpoint (looks like https://formspree.io/f/abcdwxyz)
+// 3. Replace the placeholder below OR set VITE_FORMSPREE_ENDPOINT in .env
+// Without a real endpoint, the form falls back to opening the user's mail client.
+const FORMSPREE_ENDPOINT =
+  import.meta.env.VITE_FORMSPREE_ENDPOINT || "https://formspree.io/f/YOUR_FORM_ID"
 
 type Status = "idle" | "sending" | "success" | "error"
 
@@ -26,41 +29,44 @@ export function Contact() {
     setStatus("sending")
     setErrorMsg("")
 
-    const payload = {
-      access_key: WEB3FORMS_ACCESS_KEY,
-      subject: `New portfolio message from ${firstName} ${lastName}`,
-      from_name: `${firstName} ${lastName}`,
-      reply_to: email,
-      email,
-      phone,
-      message,
-      to: profile.email,
+    const endpointConfigured =
+      FORMSPREE_ENDPOINT && !FORMSPREE_ENDPOINT.includes("YOUR_FORM_ID")
+
+    if (!endpointConfigured) {
+      openMailFallback(firstName, lastName, email, phone, message)
+      setStatus("error")
+      setErrorMsg(
+        "Opening your mail app as fallback — Formspree endpoint isn't configured yet.",
+      )
+      setTimeout(() => setStatus("idle"), 8000)
+      return
     }
 
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({
+          name: `${firstName} ${lastName}`.trim(),
+          email,
+          phone,
+          message,
+          _subject: `New portfolio message from ${firstName} ${lastName}`,
+          _replyto: email,
+        }),
       })
-      const data = await res.json()
-      if (res.ok && data.success) {
+      if (res.ok) {
         setStatus("success")
         form.reset()
         setTimeout(() => setStatus("idle"), 5000)
         return
       }
-      throw new Error(data?.message || "Submission failed")
-    } catch (err) {
-      // Fallback: open user's mail client with a pre-filled message so the
-      // email always reaches Sourav even if Web3Forms key isn't configured.
-      const subject = `Portfolio contact from ${firstName} ${lastName}`
-      const body = `Name: ${firstName} ${lastName}\nEmail: ${email}\nPhone: ${phone}\n\n${message}`
-      window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+      const data = await res.json().catch(() => ({}))
+      throw new Error(data?.error || `Submission failed (HTTP ${res.status})`)
+    } catch {
+      openMailFallback(firstName, lastName, email, phone, message)
       setStatus("error")
-      setErrorMsg(
-        "Opening your email app as a fallback — please hit send there. (Ask Sourav to add a Web3Forms key for one-click sending.)"
-      )
+      setErrorMsg("Sending failed — your mail app opened as fallback. Please send from there.")
       setTimeout(() => setStatus("idle"), 8000)
     }
   }
@@ -194,6 +200,20 @@ export function Contact() {
       </div>
     </section>
   )
+}
+
+function openMailFallback(
+  firstName: string,
+  lastName: string,
+  email: string,
+  phone: string,
+  message: string,
+) {
+  const subject = `Portfolio contact from ${firstName} ${lastName}`
+  const body = `Name: ${firstName} ${lastName}\nEmail: ${email}\nPhone: ${phone}\n\n${message}`
+  window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(
+    subject,
+  )}&body=${encodeURIComponent(body)}`
 }
 
 function Field({

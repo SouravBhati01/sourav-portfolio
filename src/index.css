@@ -55,6 +55,13 @@
   ::selection {
     @apply bg-brand-orange/30 text-white;
   }
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-orange ring-offset-2 ring-offset-brand-bg;
+    border-radius: 6px;
+  }
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-brand-orange focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white;
+  }
 }
 
 @layer components {

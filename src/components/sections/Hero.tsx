@@ -6,7 +6,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative flex w-full flex-col overflow-hidden pt-24 md:min-h-screen md:pt-20"
+      className="relative flex w-full flex-col overflow-hidden pt-20 md:min-h-screen md:pt-20"
     >
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute left-[18%] top-[35%] h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-brand-orange/20 blur-[100px]" />
@@ -25,8 +25,8 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="container-x flex flex-1 items-center py-8 sm:py-12 md:py-16 lg:py-20">
-        <div className="grid w-full grid-cols-1 items-center gap-10 sm:gap-12 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] md:gap-16 lg:gap-24">
+      <div className="container-x flex flex-1 items-center py-4 sm:py-10 md:py-16 lg:py-20">
+        <div className="grid w-full grid-cols-1 items-center gap-8 sm:gap-12 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] md:gap-16 lg:gap-24">
           <div className="relative order-1 mx-auto w-full md:mx-0">
             <div
               className="relative mx-auto aspect-square w-[290px] sm:w-[360px] md:w-full md:max-w-[440px] animate-scale-in"

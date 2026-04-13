@@ -6,7 +6,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen w-full flex-col overflow-hidden pt-24 md:pt-20"
+      className="relative flex w-full flex-col overflow-hidden pt-24 md:min-h-screen md:pt-20"
     >
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute left-[18%] top-[35%] h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-brand-orange/20 blur-[100px]" />
@@ -25,11 +25,11 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="container-x flex flex-1 items-center py-12 md:py-16 lg:py-20">
-        <div className="grid w-full grid-cols-1 items-center gap-14 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] md:gap-16 lg:gap-24">
-          <div className="relative order-2 mx-auto w-full md:order-1 md:mx-0">
+      <div className="container-x flex flex-1 items-center py-8 sm:py-12 md:py-16 lg:py-20">
+        <div className="grid w-full grid-cols-1 items-center gap-10 sm:gap-12 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] md:gap-16 lg:gap-24">
+          <div className="relative order-1 mx-auto w-full md:mx-0">
             <div
-              className="relative mx-auto aspect-square w-[280px] sm:w-[340px] md:w-full md:max-w-[440px] animate-scale-in"
+              className="relative mx-auto aspect-square w-[240px] sm:w-[320px] md:w-full md:max-w-[440px] animate-scale-in"
               style={{ animationDelay: "0.15s" }}
             >
               <div className="absolute inset-0 rounded-full border border-brand-border/60" />
@@ -59,14 +59,14 @@ export function Hero() {
               </div>
 
               <div
-                className="absolute -left-3 top-1/2 grid h-14 w-14 -translate-y-1/2 place-items-center rounded-full border border-brand-orange/60 bg-brand-bg/95 shadow-[0_0_40px_rgba(255,92,40,0.5)] backdrop-blur animate-float sm:-left-5 sm:h-16 sm:w-16"
+                className="absolute left-0 top-1/2 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-brand-orange/60 bg-brand-bg/95 shadow-[0_0_40px_rgba(255,92,40,0.5)] backdrop-blur animate-float sm:-left-3 sm:h-14 sm:w-14 md:-left-5 md:h-16 md:w-16"
                 style={{ animationDelay: "0.2s" }}
               >
-                <span className="text-xl sm:text-2xl">👋</span>
+                <span className="text-lg sm:text-xl md:text-2xl">👋</span>
               </div>
 
               <div
-                className="absolute -right-2 top-6 flex items-center gap-1.5 rounded-full border border-brand-border bg-brand-surface/95 px-2.5 py-1 text-[10px] font-medium text-white shadow-xl backdrop-blur animate-float sm:top-10 sm:px-3 sm:py-1.5 sm:text-[11px]"
+                className="absolute right-0 top-4 flex items-center gap-1.5 rounded-full border border-brand-border bg-brand-surface/95 px-2.5 py-1 text-[10px] font-medium text-white shadow-xl backdrop-blur animate-float sm:-right-2 sm:top-10 sm:px-3 sm:py-1.5 sm:text-[11px]"
                 style={{ animationDelay: "1.2s" }}
               >
                 <span className="relative flex h-1.5 w-1.5">
@@ -77,7 +77,7 @@ export function Hero() {
               </div>
 
               <div
-                className="absolute bottom-4 -right-3 rounded-2xl border border-brand-border bg-brand-surface/95 px-3 py-2 text-[10px] shadow-xl backdrop-blur animate-float sm:bottom-6 sm:text-[11px]"
+                className="absolute bottom-4 right-0 rounded-2xl border border-brand-border bg-brand-surface/95 px-3 py-2 text-[10px] shadow-xl backdrop-blur animate-float sm:-right-3 sm:bottom-6 sm:text-[11px]"
                 style={{ animationDelay: "2.2s" }}
               >
                 <div className="flex items-center gap-2 text-white">
@@ -88,7 +88,7 @@ export function Hero() {
               </div>
 
               <div
-                className="absolute -bottom-2 left-4 rounded-full border border-brand-border bg-brand-surface/95 px-3 py-1.5 text-[10px] font-medium text-brand-orange shadow-xl backdrop-blur animate-float sm:left-8 sm:text-[11px]"
+                className="absolute -bottom-2 left-2 rounded-full border border-brand-border bg-brand-surface/95 px-2.5 py-1 text-[10px] font-medium text-brand-orange shadow-xl backdrop-blur animate-float sm:left-6 sm:px-3 sm:py-1.5 sm:text-[11px]"
                 style={{ animationDelay: "1.8s" }}
               >
                 ⚡ LeetCode · Knight
@@ -96,7 +96,7 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="relative order-1 md:order-2">
+          <div className="relative order-2">
             <span
               className="chip mb-6 animate-fade-up"
               style={{ animationDelay: "0s" }}

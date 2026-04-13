@@ -31,6 +31,10 @@
   * {
     @apply border-border;
   }
+  html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
   html {
     scroll-behavior: smooth;
   }
@@ -44,6 +48,10 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-display;
   }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
   ::selection {
     @apply bg-brand-orange/30 text-white;
   }
@@ -51,10 +59,10 @@
 
 @layer components {
   .section-pad {
-    @apply py-20 md:py-28;
+    @apply py-16 sm:py-20 md:py-28;
   }
   .container-x {
-    @apply mx-auto w-full max-w-6xl px-5 md:px-8;
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-5 md:px-8;
   }
   .chip {
     @apply inline-flex items-center gap-2 rounded-full border border-brand-border bg-brand-surface/60 px-3 py-1 text-xs text-brand-muted;

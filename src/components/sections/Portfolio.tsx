@@ -44,13 +44,13 @@ const projects: Project[] = [
     img: "https://images.unsplash.com/photo-1589254065878-42c9da997008?w=900&q=85&auto=format&fit=crop",
   },
   {
-    title: "Favicon Generator",
+    title: "Sola PDF Converter",
     category: "Tools",
-    desc: "Upload an image and instantly generate multi-size favicons + manifest files for web & PWA apps.",
-    stack: ["React", "Canvas API", "TailwindCSS"],
+    desc: "A sleek PDF toolkit — convert, compress, merge, and split PDFs right in the browser with zero upload delay.",
+    stack: ["React", "PDF.js", "TailwindCSS"],
     gradient: "from-pink-500/40 via-rose-500/20 to-transparent",
-    img: "https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=900&q=85&auto=format&fit=crop",
-    live: "https://favicon-gen-seven.vercel.app/",
+    img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=900&q=85&auto=format&fit=crop",
+    live: "https://sola-pdf-converter.vercel.app/",
   },
   {
     title: "Resume Creator",

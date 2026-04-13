@@ -32,7 +32,7 @@ const timeline: Item[] = [
     tag: "Work",
     title: "Freelance Full-Stack Developer",
     where: "Remote · Freelance",
-    period: "2024 — Present",
+    period: "2025 — Present",
     desc: "Built 5+ websites and web apps for clients — landing pages, dashboards, and small SaaS tools using React, Node.js, and Tailwind.",
   },
 ]

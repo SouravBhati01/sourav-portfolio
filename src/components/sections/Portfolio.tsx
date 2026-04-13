@@ -24,6 +24,7 @@ const projects: Project[] = [
     stack: ["React", "TypeScript", "Canvas", "Zustand"],
     gradient: "from-emerald-500/40 via-teal-500/20 to-transparent",
     img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=85&auto=format&fit=crop",
+    live: "https://vectorsheets.vercel.app/",
   },
   {
     title: "CodeTrackr",
@@ -32,6 +33,7 @@ const projects: Project[] = [
     stack: ["Next.js", "Node", "MongoDB", "Chart.js"],
     gradient: "from-orange-500/40 via-amber-500/20 to-transparent",
     img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=900&q=85&auto=format&fit=crop",
+    live: "https://codetrackr-app.vercel.app/",
   },
   {
     title: "Jarvis",
@@ -48,6 +50,7 @@ const projects: Project[] = [
     stack: ["React", "Canvas API", "TailwindCSS"],
     gradient: "from-pink-500/40 via-rose-500/20 to-transparent",
     img: "https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=900&q=85&auto=format&fit=crop",
+    live: "https://favicon-gen-seven.vercel.app/",
   },
   {
     title: "Resume Creator",
@@ -56,6 +59,7 @@ const projects: Project[] = [
     stack: ["React", "jsPDF", "Tailwind", "DnD-kit"],
     gradient: "from-violet-500/40 via-fuchsia-500/20 to-transparent",
     img: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=900&q=85&auto=format&fit=crop",
+    live: "https://theresumecompany.vercel.app/",
   },
   {
     title: "Magic Tiles",
@@ -64,6 +68,7 @@ const projects: Project[] = [
     stack: ["JavaScript", "HTML5 Audio", "CSS3"],
     gradient: "from-purple-500/40 via-blue-500/20 to-transparent",
     img: "https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=900&q=85&auto=format&fit=crop",
+    live: "https://magic-tiles-xi.vercel.app/",
   },
 ]
 
@@ -139,14 +144,23 @@ export function Portfolio() {
                   </div>
 
                   <div className="mt-5 flex items-center gap-2 pt-4">
-                    <a
-                      href={p.live || "#"}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-full bg-brand-orange px-3 py-1.5 text-xs font-semibold text-white transition-all hover:-translate-y-0.5"
-                    >
-                      <ExternalLink size={12} /> Live
-                    </a>
+                    {p.live ? (
+                      <a
+                        href={p.live}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-full bg-brand-orange px-3 py-1.5 text-xs font-semibold text-white transition-all hover:-translate-y-0.5"
+                      >
+                        <ExternalLink size={12} /> Live
+                      </a>
+                    ) : (
+                      <span
+                        title="Live demo coming soon"
+                        className="inline-flex cursor-not-allowed items-center gap-1.5 rounded-full border border-brand-border bg-brand-bg/50 px-3 py-1.5 text-xs font-medium text-brand-muted"
+                      >
+                        Coming soon
+                      </span>
+                    )}
                     <a
                       href={p.code || "https://github.com/SouravBhati01"}
                       target="_blank"

@@ -40,7 +40,7 @@ export function About() {
               <img
                 src="/sourav_photo.jpg"
                 alt="Sourav Rajput"
-                className="h-[320px] w-full rounded-[1.7rem] object-cover object-top sm:h-[380px] md:h-[440px] lg:h-[460px]"
+                className="h-[260px] w-full rounded-[1.7rem] object-cover object-top sm:h-[320px] md:h-[400px] lg:h-[440px]"
               />
             </div>
             <div className="absolute -bottom-4 -left-3 card-surface px-4 py-3 sm:-bottom-6 sm:-left-6 sm:px-5 sm:py-4">

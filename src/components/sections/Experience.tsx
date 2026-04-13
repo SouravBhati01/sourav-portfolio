@@ -25,7 +25,7 @@ const timeline: Item[] = [
     title: "Shipping real-world products",
     where: "Solo + Collaborations",
     period: "2024 — Present",
-    desc: "Designed and shipped VectorSheets, CodeTrackr, Jarvis, Favicon Generator, Resume Creator, and Magic Tiles — from idea to deployed production.",
+    desc: "Designed and shipped VectorSheets, CodeTrackr, Jarvis, Sola PDF Converter, Resume Creator, and Magic Tiles — from idea to deployed production.",
   },
   {
     Icon: Briefcase,

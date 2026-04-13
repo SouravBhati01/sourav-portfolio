@@ -29,12 +29,12 @@ export function Hero() {
         <div className="grid w-full grid-cols-1 items-center gap-10 sm:gap-12 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] md:gap-16 lg:gap-24">
           <div className="relative order-1 mx-auto w-full md:mx-0">
             <div
-              className="relative mx-auto aspect-square w-[240px] sm:w-[320px] md:w-full md:max-w-[440px] animate-scale-in"
+              className="relative mx-auto aspect-square w-[290px] sm:w-[360px] md:w-full md:max-w-[440px] animate-scale-in"
               style={{ animationDelay: "0.15s" }}
             >
               <div className="absolute inset-0 rounded-full border border-brand-border/60" />
-              <div className="absolute inset-[14px] rounded-full border border-brand-border/50" />
-              <div className="absolute inset-[28px] rounded-full border border-brand-border/30" />
+              <div className="absolute inset-[10px] rounded-full border border-brand-border/50 sm:inset-[14px]" />
+              <div className="absolute inset-[20px] rounded-full border border-brand-border/30 sm:inset-[28px]" />
 
               <div
                 className="absolute -inset-3 rounded-full opacity-75 [will-change:transform]"
@@ -49,7 +49,7 @@ export function Hero() {
 
               <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_center,rgba(255,92,40,0.3),transparent_60%)] blur-xl" />
 
-              <div className="group absolute inset-[44px] overflow-hidden rounded-full ring-1 ring-white/5 shadow-[0_20px_60px_-20px_rgba(255,92,40,0.35)]">
+              <div className="group absolute inset-[28px] overflow-hidden rounded-full ring-1 ring-white/5 shadow-[0_20px_60px_-20px_rgba(255,92,40,0.35)] sm:inset-[36px] md:inset-[44px]">
                 <img
                   src="/sourav_photo.jpg"
                   alt="Sourav Rajput"

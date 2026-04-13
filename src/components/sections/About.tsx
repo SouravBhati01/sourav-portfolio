@@ -33,18 +33,18 @@ export function About() {
           </p>
         </div>
 
-        <div className="mt-14 grid items-center gap-12 md:grid-cols-2">
-          <div className="relative mx-auto w-full max-w-md animate-float">
-            <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-br from-brand-orange/40 to-transparent blur-2xl" />
+        <div className="mt-12 grid items-center gap-12 md:mt-14 md:grid-cols-2">
+          <div className="relative mx-auto w-full max-w-xs sm:max-w-sm md:max-w-md md:animate-float">
+            <div className="absolute -inset-3 -z-10 rounded-[2rem] bg-gradient-to-br from-brand-orange/40 to-transparent blur-2xl md:-inset-4" />
             <div className="rounded-[2rem] border border-brand-border bg-brand-surface p-2">
               <img
                 src="/sourav_photo.jpg"
                 alt="Sourav Rajput"
-                className="h-[460px] w-full rounded-[1.7rem] object-cover object-top"
+                className="h-[320px] w-full rounded-[1.7rem] object-cover object-top sm:h-[380px] md:h-[440px] lg:h-[460px]"
               />
             </div>
-            <div className="absolute -bottom-6 -left-6 card-surface px-5 py-4">
-              <div className="text-3xl font-bold text-white">3+</div>
+            <div className="absolute -bottom-4 -left-3 card-surface px-4 py-3 sm:-bottom-6 sm:-left-6 sm:px-5 sm:py-4">
+              <div className="text-2xl font-bold text-white sm:text-3xl">3+</div>
               <div className="text-xs text-brand-muted">Years of coding</div>
             </div>
           </div>

@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee-rtl {
+  animation: marquee 30s linear infinite;
+  will-change: transform;
+}
+.animate-marquee-ltr {
+  animation: marquee 30s linear infinite reverse;
+  will-change: transform;
+}
+
 @layer base {
   :root {
     --background: 240 12% 6%;

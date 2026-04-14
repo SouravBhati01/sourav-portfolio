@@ -2,9 +2,8 @@ import { useState } from "react"
 import { Mail, MapPin, Phone, Send, ExternalLink, CheckCircle2, AlertCircle } from "lucide-react"
 import { profile, socials } from "@/lib/profile"
 
-// Uses /api/contact — a Vercel serverless function that delivers via
-// Resend / Brevo / FormSubmit depending on what env var is configured.
-const CONTACT_ENDPOINT = "/api/contact"
+// Formspree endpoint — submissions land directly in souravrajput1034@gmail.com.
+const CONTACT_ENDPOINT = "https://formspree.io/f/myklzyzb"
 
 type Status = "idle" | "sending" | "success" | "error"
 
@@ -28,22 +27,34 @@ export function Contact() {
     try {
       const res = await fetch(CONTACT_ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ firstName, lastName, email, phone, message }),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: `${firstName} ${lastName}`.trim(),
+          email,
+          phone,
+          message,
+          _subject: `Portfolio contact · ${firstName} ${lastName}`,
+        }),
       })
 
       const data = (await res.json().catch(() => ({}))) as {
-        success?: boolean
+        ok?: boolean
         error?: string
+        errors?: { message: string }[]
       }
 
-      if (res.ok && data.success) {
+      if (res.ok) {
         setStatus("success")
         form.reset()
         setTimeout(() => setStatus("idle"), 6000)
         return
       }
-      throw new Error(data.error || `HTTP ${res.status}`)
+      throw new Error(
+        data.errors?.[0]?.message || data.error || `HTTP ${res.status}`,
+      )
     } catch (err) {
       setStatus("error")
       setErrorMsg(

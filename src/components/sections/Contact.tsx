@@ -2,13 +2,9 @@ import { useState } from "react"
 import { Mail, MapPin, Phone, Send, ExternalLink, CheckCircle2, AlertCircle } from "lucide-react"
 import { profile, socials } from "@/lib/profile"
 
-// Formspree endpoint — sign up at https://formspree.io (free: 50 submissions/month)
-// 1. Create a new form with souravrajput1034@gmail.com as the owner
-// 2. Copy your form's endpoint (looks like https://formspree.io/f/abcdwxyz)
-// 3. Replace the placeholder below OR set VITE_FORMSPREE_ENDPOINT in .env
-// Without a real endpoint, the form falls back to opening the user's mail client.
-const FORMSPREE_ENDPOINT =
-  import.meta.env.VITE_FORMSPREE_ENDPOINT || "https://formspree.io/f/YOUR_FORM_ID"
+// FormSubmit.co — zero signup. First submission triggers a confirmation email to
+// this address; click the link once and every future submission arrives in Gmail.
+const FORMSUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${profile.email}`
 
 type Status = "idle" | "sending" | "success" | "error"
 
@@ -29,45 +25,39 @@ export function Contact() {
     setStatus("sending")
     setErrorMsg("")
 
-    const endpointConfigured =
-      FORMSPREE_ENDPOINT && !FORMSPREE_ENDPOINT.includes("YOUR_FORM_ID")
-
-    if (!endpointConfigured) {
-      openMailFallback(firstName, lastName, email, phone, message)
-      setStatus("error")
-      setErrorMsg(
-        "Opening your mail app as fallback — Formspree endpoint isn't configured yet.",
-      )
-      setTimeout(() => setStatus("idle"), 8000)
-      return
-    }
-
     try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
+      const res = await fetch(FORMSUBMIT_ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
         body: JSON.stringify({
           name: `${firstName} ${lastName}`.trim(),
           email,
           phone,
           message,
-          _subject: `New portfolio message from ${firstName} ${lastName}`,
-          _replyto: email,
+          _subject: `Portfolio contact · ${firstName} ${lastName}`,
+          _template: "table",
+          _captcha: "false",
         }),
       })
-      if (res.ok) {
+
+      const data = await res.json().catch(() => ({} as { success?: string }))
+
+      if (res.ok && (data.success === "true" || data.success === true)) {
         setStatus("success")
         form.reset()
-        setTimeout(() => setStatus("idle"), 5000)
+        setTimeout(() => setStatus("idle"), 6000)
         return
       }
-      const data = await res.json().catch(() => ({}))
-      throw new Error(data?.error || `Submission failed (HTTP ${res.status})`)
+      throw new Error("Submission failed")
     } catch {
-      openMailFallback(firstName, lastName, email, phone, message)
       setStatus("error")
-      setErrorMsg("Sending failed — your mail app opened as fallback. Please send from there.")
-      setTimeout(() => setStatus("idle"), 8000)
+      setErrorMsg(
+        "Couldn't send right now. Please email me directly or try again in a minute.",
+      )
+      setTimeout(() => setStatus("idle"), 6000)
     }
   }
 
@@ -102,8 +92,10 @@ export function Contact() {
               <div className="mt-4 flex items-start gap-3 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-300">
                 <CheckCircle2 size={18} className="mt-0.5 shrink-0" />
                 <div>
-                  <div className="font-semibold">Message sent successfully!</div>
-                  <div className="text-emerald-300/80">Thanks for reaching out — I'll get back to you soon.</div>
+                  <div className="font-semibold">Message sent ✓</div>
+                  <div className="text-emerald-300/80">
+                    Thanks for reaching out — I'll get back to you within 24 hours.
+                  </div>
                 </div>
               </div>
             )}
@@ -133,7 +125,7 @@ export function Contact() {
             </button>
 
             <p className="mt-3 text-center text-[11px] text-brand-muted">
-              Your message goes directly to <span className="text-white">{profile.email}</span>
+              Delivered straight to <span className="text-white">{profile.email}</span>
             </p>
           </form>
 
@@ -200,20 +192,6 @@ export function Contact() {
       </div>
     </section>
   )
-}
-
-function openMailFallback(
-  firstName: string,
-  lastName: string,
-  email: string,
-  phone: string,
-  message: string,
-) {
-  const subject = `Portfolio contact from ${firstName} ${lastName}`
-  const body = `Name: ${firstName} ${lastName}\nEmail: ${email}\nPhone: ${phone}\n\n${message}`
-  window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(
-    subject,
-  )}&body=${encodeURIComponent(body)}`
 }
 
 function Field({

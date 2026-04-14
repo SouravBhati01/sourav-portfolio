@@ -37,11 +37,10 @@ export function Hero() {
               <div className="absolute inset-[20px] rounded-full border border-brand-border/30 sm:inset-[28px]" />
 
               <div
-                className="absolute -inset-3 rounded-full opacity-75 [will-change:transform]"
+                className="absolute -inset-3 rounded-full opacity-60"
                 style={{
                   background:
-                    "conic-gradient(from 0deg, transparent 0deg, rgba(255,92,40,0.65) 60deg, transparent 130deg, transparent 360deg)",
-                  animation: "spin 10s linear infinite",
+                    "conic-gradient(from 0deg, transparent 0deg, rgba(255,92,40,0.6) 60deg, transparent 130deg, transparent 360deg)",
                   maskImage: "radial-gradient(circle, transparent 59%, black 61%)",
                   WebkitMaskImage: "radial-gradient(circle, transparent 59%, black 61%)",
                 }}
@@ -53,6 +52,8 @@ export function Hero() {
                 <img
                   src="/sourav_photo.jpg"
                   alt="Sourav Rajput"
+                  fetchPriority="high"
+                  decoding="async"
                   className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(11,11,16,0.85)_100%)]" />

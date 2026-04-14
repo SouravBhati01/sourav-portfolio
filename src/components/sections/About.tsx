@@ -40,6 +40,8 @@ export function About() {
               <img
                 src="/sourav_photo.jpg"
                 alt="Sourav Rajput"
+                loading="lazy"
+                decoding="async"
                 className="h-[260px] w-full rounded-[1.7rem] object-cover object-top sm:h-[320px] md:h-[400px] lg:h-[440px]"
               />
             </div>

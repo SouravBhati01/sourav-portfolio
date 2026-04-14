@@ -11,13 +11,11 @@
   }
 }
 
-.animate-marquee-rtl {
-  animation: marquee 30s linear infinite;
-  will-change: transform;
-}
-.animate-marquee-ltr {
-  animation: marquee 30s linear infinite reverse;
-  will-change: transform;
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-ltr,
+  .animate-marquee {
+    animation: marquee 25s linear infinite reverse !important;
+  }
 }
 
 @layer base {

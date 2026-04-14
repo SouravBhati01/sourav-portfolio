@@ -114,6 +114,8 @@ module.exports = {
         "scale-in": "scale-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both",
         float: "float 5s ease-in-out infinite",
         shimmer: "shimmer 3s linear infinite",
+        marquee: "marquee 25s linear infinite",
+        "marquee-ltr": "marquee 25s linear infinite reverse",
       },
     },
   },

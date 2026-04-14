@@ -12,21 +12,21 @@ const testimonials: T[] = [
   {
     quote:
       "Sourav shipped our landing page in record time — the design, code, and deploy all handled end-to-end. The attention to detail on animations and responsiveness was exactly what we needed.",
-    name: "Ankit Sharma",
+    name: "Sukhjeet Khalsa",
     role: "Founder · early-stage SaaS",
     avatar: "https://i.pravatar.cc/100?img=12",
   },
   {
     quote:
       "Genuinely impressed by how quickly Sourav turned a rough brief into a polished, production-ready dashboard. Clean code, solid Tailwind foundations, and a great communicator throughout.",
-    name: "Priya Verma",
+    name: "Aaron K.",
     role: "Product Manager · fintech",
-    avatar: "https://i.pravatar.cc/100?img=47",
+    avatar: "https://i.pravatar.cc/100?img=52",
   },
   {
     quote:
       "Rare combo — strong frontend eye + real backend skills. Our MVP was live in under two weeks. Would 100% work with him again on the next phase.",
-    name: "Rahul Mehta",
+    name: "Ansad",
     role: "Indie Hacker",
     avatar: "https://i.pravatar.cc/100?img=33",
   },

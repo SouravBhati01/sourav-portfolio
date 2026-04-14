@@ -87,12 +87,6 @@ export function Hero() {
                 </div>
               </div>
 
-              <div
-                className="absolute -bottom-2 left-2 rounded-full border border-brand-border bg-brand-surface/95 px-2.5 py-1 text-[10px] font-medium text-brand-orange shadow-xl backdrop-blur animate-float sm:left-6 sm:px-3 sm:py-1.5 sm:text-[11px]"
-                style={{ animationDelay: "1.8s" }}
-              >
-                ⚡ LeetCode · Knight
-              </div>
             </div>
           </div>
 

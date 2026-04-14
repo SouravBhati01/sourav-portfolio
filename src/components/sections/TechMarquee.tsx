@@ -26,7 +26,7 @@ export function TechMarquee() {
     >
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-brand-bg via-brand-bg/90 to-transparent sm:w-24 md:w-32" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-brand-bg via-brand-bg/90 to-transparent sm:w-24 md:w-32" />
-      <div className="flex w-max flex-nowrap gap-4 whitespace-nowrap animate-marquee-ltr sm:gap-6 md:gap-8">
+      <div className="flex w-max flex-nowrap gap-4 whitespace-nowrap animate-marquee sm:gap-6 md:gap-8">
         {loop.map((t, i) => (
           <span
             key={`${t}-${i}`}

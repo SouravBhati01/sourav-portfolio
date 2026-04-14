@@ -12,9 +12,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-marquee-ltr,
-  .animate-marquee {
-    animation: marquee 25s linear infinite reverse !important;
+  .animate-marquee,
+  .animate-marquee-ltr {
+    animation: marquee 25s linear infinite !important;
   }
 }
 

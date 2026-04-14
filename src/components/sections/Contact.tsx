@@ -2,9 +2,9 @@ import { useState } from "react"
 import { Mail, MapPin, Phone, Send, ExternalLink, CheckCircle2, AlertCircle } from "lucide-react"
 import { profile, socials } from "@/lib/profile"
 
-// FormSubmit.co — zero signup. First submission triggers a confirmation email to
-// this address; click the link once and every future submission arrives in Gmail.
-const FORMSUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${profile.email}`
+// Uses /api/contact — a Vercel serverless function that delivers via
+// Resend / Brevo / FormSubmit depending on what env var is configured.
+const CONTACT_ENDPOINT = "/api/contact"
 
 type Status = "idle" | "sending" | "success" | "error"
 
@@ -26,38 +26,32 @@ export function Contact() {
     setErrorMsg("")
 
     try {
-      const res = await fetch(FORMSUBMIT_ENDPOINT, {
+      const res = await fetch(CONTACT_ENDPOINT, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          name: `${firstName} ${lastName}`.trim(),
-          email,
-          phone,
-          message,
-          _subject: `Portfolio contact · ${firstName} ${lastName}`,
-          _template: "table",
-          _captcha: "false",
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ firstName, lastName, email, phone, message }),
       })
 
-      const data = await res.json().catch(() => ({} as { success?: string }))
+      const data = (await res.json().catch(() => ({}))) as {
+        success?: boolean
+        error?: string
+      }
 
-      if (res.ok && (data.success === "true" || data.success === true)) {
+      if (res.ok && data.success) {
         setStatus("success")
         form.reset()
         setTimeout(() => setStatus("idle"), 6000)
         return
       }
-      throw new Error("Submission failed")
-    } catch {
+      throw new Error(data.error || `HTTP ${res.status}`)
+    } catch (err) {
       setStatus("error")
       setErrorMsg(
-        "Couldn't send right now. Please email me directly or try again in a minute.",
+        err instanceof Error
+          ? `Couldn't send: ${err.message}`
+          : "Couldn't send right now. Please try again shortly.",
       )
-      setTimeout(() => setStatus("idle"), 6000)
+      setTimeout(() => setStatus("idle"), 8000)
     }
   }
 

@@ -38,7 +38,7 @@ export function About() {
             <div className="absolute -inset-3 -z-10 rounded-[2rem] bg-gradient-to-br from-brand-orange/40 to-transparent blur-2xl md:-inset-4" />
             <div className="rounded-[2rem] border border-brand-border bg-brand-surface p-2">
               <img
-                src="/Sourav_Photo_Official.png?v=2"
+                src="/photo.png"
                 alt="Sourav Rajput"
                 loading="lazy"
                 decoding="async"

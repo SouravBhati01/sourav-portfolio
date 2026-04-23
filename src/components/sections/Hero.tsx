@@ -50,7 +50,7 @@ export function Hero() {
 
               <div className="group absolute inset-[28px] overflow-hidden rounded-full ring-1 ring-white/5 shadow-[0_20px_60px_-20px_rgba(255,92,40,0.35)] sm:inset-[36px] md:inset-[44px]">
                 <img
-                  src="/sourav_photo.jpg"
+                  src="/Sourav_Photo_Official.png"
                   alt="Sourav Rajput"
                   fetchPriority="high"
                   decoding="async"

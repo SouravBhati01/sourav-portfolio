@@ -53,13 +53,13 @@ const projects: Project[] = [
     live: "https://sola-pdf-converter.vercel.app/",
   },
   {
-    title: "Resume Creator",
+    title: "Velocity",
     category: "Tools",
-    desc: "Drag-and-drop resume builder with live preview, ATS-friendly templates, and one-click PDF export.",
-    stack: ["React", "jsPDF", "Tailwind", "DnD-kit"],
+    desc: "Measure your reading speed in words per minute. Paste any text, hit start, and get your WPM score instantly.",
+    stack: ["React", "TypeScript", "Tailwind"],
     gradient: "from-violet-500/40 via-fuchsia-500/20 to-transparent",
-    img: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=900&q=85&auto=format&fit=crop",
-    live: "https://theresumecompany.vercel.app/",
+    img: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=900&q=85&auto=format&fit=crop",
+    live: "https://velocity-amber.vercel.app/",
   },
   {
     title: "Magic Tiles",
